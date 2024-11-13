@@ -17,11 +17,11 @@ module.exports = (angularWebpackConfig, options) => {
     plugins: [
       ...singleSpaWebpackConfig.plugins,
       new ModuleFederationPlugin({
-        name: "mfe2",
+        name: "mfe3",
         library: { type: "module" },
         filename: "remoteEntry.js",
         exposes: {
-          "./App": "./projects/mfe2/src/main.single-spa.ts",
+          "./App": "./projects/mfe3/src/main.single-spa.ts",
         },
         shared: {
           "@angular/core": { eager: false, singleton: true, strictVersion: true, shareKey: "@angular/core@17" },
@@ -34,8 +34,8 @@ module.exports = (angularWebpackConfig, options) => {
     ],
     output: {
       ...singleSpaWebpackConfig.output,
-      library: "mfe2",
-      publicPath: "http://localhost:4202/",
+      library: "mfe3",
+      publicPath: "http://localhost:4203/",
     },
     experiments: {
       outputModule: true

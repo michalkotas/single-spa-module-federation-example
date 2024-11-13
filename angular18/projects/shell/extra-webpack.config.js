@@ -12,10 +12,6 @@ module.exports = (angularWebpackConfig, options) => {
       new ModuleFederationPlugin({
         name: "shell",
         filename: "remoteEntry.js",
-        // remotes: {
-        //   mfe1: 'mfe1@http://localhost:4201/remoteEntry.js',
-        //   mfe2: 'mfe2@http://localhost:4202/remoteEntry.js'
-        // },
         shared: {
           "@angular/core": { eager: false, singleton: true, strictVersion: true, strictVersion: true },
           "@angular/common": { eager: false, singleton: true, strictVersion: true, strictVersion: true },

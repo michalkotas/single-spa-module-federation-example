@@ -76,6 +76,80 @@
           "defaultConfiguration": "development"
         }
       }
+    },
+    "mfe3": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/mfe3",
+      "sourceRoot": "projects/mfe3/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "outputPath": "dist/mfe3",
+            "index": "projects/mfe3/src/index.html",
+            "main": "projects/mfe3/src/main.single-spa.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/mfe3/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/mfe3/src/favicon.ico",
+              "projects/mfe3/src/assets"
+            ],
+            "styles": ["./projects/mfe3/src/styles.scss"],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "projects/mfe3/extra-webpack.config.js"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "port": 4203
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "mfe3:build:production"
+            },
+            "development": {
+              "buildTarget": "mfe3:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
     }
   }
 }

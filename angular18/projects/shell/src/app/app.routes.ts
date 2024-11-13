@@ -18,6 +18,8 @@ const loadMfe = (name: string, remoteEntry: string, exposedModule: string) =>
         activeWhen: `/${name}`,
       });
     }
+    //@ts-expect-error
+    console.log('share scopes', __webpack_share_scopes__)
     return DummyComponent;
   });
 
@@ -32,4 +34,9 @@ export const routes: Routes = [
     loadComponent: () =>
       loadMfe('mfe2', 'http://localhost:4202/remoteEntry.js', './App'),
   },
+  {
+    path: 'mfe3',
+    loadComponent: () =>
+      loadMfe('mfe3', 'http://localhost:4203/remoteEntry.js', './App'),
+  },  
 ];
