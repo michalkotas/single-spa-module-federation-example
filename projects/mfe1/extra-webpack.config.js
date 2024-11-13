@@ -18,7 +18,7 @@ module.exports = (angularWebpackConfig, options) => {
       ...singleSpaWebpackConfig.plugins,
       new ModuleFederationPlugin({
         name: "mfe1",
-        library: { type: "system" },
+        library: { type: "module" },
         filename: "remoteEntry.js",
         exposes: {
           "./App": "./projects/mfe1/src/main.single-spa.ts",
@@ -35,9 +35,11 @@ module.exports = (angularWebpackConfig, options) => {
     output: {
       ...singleSpaWebpackConfig.output,
       library: "mfe1",
-      libraryTarget: "system",
       publicPath: "http://localhost:4201/",
     },
+    experiments: {
+      outputModule: true
+    }
   };
 
   return config;

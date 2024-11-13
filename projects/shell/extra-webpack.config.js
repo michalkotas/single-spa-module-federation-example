@@ -11,12 +11,11 @@ module.exports = (angularWebpackConfig, options) => {
       ...angularWebpackConfig.plugins,
       new ModuleFederationPlugin({
         name: "shell",
-        library: { type: "system" },
         filename: "remoteEntry.js",
-        remotes: {
-          mfe1: 'mfe1',
-          mfe2: 'mfe2',
-        },
+        // remotes: {
+        //   mfe1: 'mfe1@http://localhost:4201/remoteEntry.js',
+        //   mfe2: 'mfe2@http://localhost:4202/remoteEntry.js'
+        // },
         shared: {
           "@angular/core": { eager: false, singleton: true },
           "@angular/common": { eager: false, singleton: true },
@@ -29,7 +28,6 @@ module.exports = (angularWebpackConfig, options) => {
     output: {
       ...angularWebpackConfig.output,
       publicPath: "http://localhost:4200/",
-      libraryTarget: "system"
     }
   };
   return config;

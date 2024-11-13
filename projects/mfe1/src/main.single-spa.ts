@@ -1,7 +1,5 @@
 import {
-  APP_INITIALIZER,
   ApplicationRef,
-  ErrorHandler,
   NgZone,
 } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';

@@ -6,24 +6,8 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script type="systemjs-importmap">
-    {
-      "imports": {
-        "shell": "http://localhost:4200/remoteEntry.js",
-        "mfe1": "http://localhost:4201/remoteEntry.js",
-        "mfe2": "http://localhost:4202/remoteEntry.js",
-        "mfe1/": "http://localhost:4201/",
-        "shell/": "http://localhost:4200/"
-      }
-    }
-  </script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/zone.js@0.14.3/+esm"></script> -->
 </head>
 <body>
   <app-root></app-root>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/s.min.js"></script>
-  <script>
-    System.import('shell/main.js')
-  </script>
 </body>
 </html>
