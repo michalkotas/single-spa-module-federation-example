@@ -19,7 +19,7 @@
           "options": {
             "outputPath": "dist/mfe1",
             "index": "projects/mfe1/src/index.html",
-            "main": "projects/mfe1/src/main.ts",
+            "main": "projects/mfe1/src/main.single-spa.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/mfe1/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
