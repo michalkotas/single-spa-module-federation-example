@@ -17,11 +17,11 @@ module.exports = (angularWebpackConfig, options) => {
         //   mfe2: 'mfe2@http://localhost:4202/remoteEntry.js'
         // },
         shared: {
-          "@angular/core": { eager: false, singleton: true },
-          "@angular/common": { eager: false, singleton: true },
-          "@angular/router": { eager: false, singleton: true },
-          "single-spa": { eager: false, singleton: true },
-          "single-spa-angular": { eager: false, singleton: true },
+          "@angular/core": { eager: false, singleton: true, strictVersion: true, strictVersion: true },
+          "@angular/common": { eager: false, singleton: true, strictVersion: true, strictVersion: true },
+          "@angular/router": { eager: false, singleton: true, strictVersion: true, strictVersion: true },
+          "single-spa": { eager: false, singleton: true, strictVersion: true, strictVersion: true },
+          "single-spa-angular": { eager: false, singleton: true, strictVersion: true, strictVersion: true },
         },
       }),
     ],

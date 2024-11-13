@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DummyService } from './dummy.service';
 
 @Component({
   selector: 'mfe1-app-root',
@@ -8,6 +9,11 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'mfe1';
+  private dummyService = inject(DummyService)
+
+  ngOnInit(): void {
+    this.dummyService.doNothing()
+  }
 }
