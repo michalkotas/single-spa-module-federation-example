@@ -1,4 +1,4 @@
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = (angularWebpackConfig, options) => {
   const config = {
@@ -10,6 +10,7 @@ module.exports = (angularWebpackConfig, options) => {
     plugins: [
       ...angularWebpackConfig.plugins,
       new ModuleFederationPlugin({
+        remoteType: "dmodule",
         name: "shell",
         filename: "remoteEntry.js",
         shared: {

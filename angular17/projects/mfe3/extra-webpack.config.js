@@ -1,6 +1,6 @@
 const singleSpaAngularWebpack =
   require("single-spa-angular/lib/webpack").default;
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = (angularWebpackConfig, options) => {
   const singleSpaWebpackConfig = singleSpaAngularWebpack(
