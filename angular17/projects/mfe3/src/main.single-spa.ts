@@ -1,9 +1,4 @@
-import {
-  APP_INITIALIZER,
-  ApplicationRef,
-  ErrorHandler,
-  NgZone,
-} from '@angular/core';
+import { ApplicationRef, NgZone } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   Router,
@@ -19,10 +14,9 @@ import {
 } from 'single-spa-angular';
 
 import { AppComponent } from './app/app.component';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
-import { emptyRoutes } from './app/app.routes'
-import { AppProps, LifeCycleFn } from 'single-spa';
+import { emptyRoutes } from './app/app.routes';
+import { AppProps } from 'single-spa';
 
 let applicationRef: ApplicationRef;
 const lifecycles = singleSpaAngular({
@@ -46,20 +40,13 @@ const lifecycles = singleSpaAngular({
     });
   },
   template: '<mfe3-app-root />',
+  domElementGetter: () =>
+    document.getElementById('microfrontend-container') as HTMLElement,
   Router,
   NavigationStart,
   NgZone,
 });
 
 export const bootstrap = lifecycles.bootstrap;
-
 export const mount = lifecycles.mount;
 export const unmount = lifecycles.unmount;
-// export function unmount(props: AppProps) {
-//   const unmount = lifecycles.unmount as LifeCycleFn<AppProps>;
-//   return unmount(props).then(() => {
-//     if (!applicationRef.destroyed) {
-//       applicationRef.destroy();
-//     }
-//   });
-// }

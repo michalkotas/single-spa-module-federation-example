@@ -26,6 +26,7 @@ module.exports = (angularWebpackConfig, options) => {
         shared: {
           "@angular/core": { eager: false, singleton: true , strictVersion: true},
           "@angular/common": { eager: false, singleton: true, strictVersion: true },
+          "@angular/common/http": { eager: false, singleton: true, strictVersion: true },
           "@angular/router": { eager: false, singleton: true, strictVersion: true },
           "single-spa": { eager: false, singleton: true, strictVersion: true },
           "single-spa-angular": { eager: false, singleton: true, strictVersion: true },

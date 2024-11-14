@@ -1,7 +1,4 @@
-import {
-  ApplicationRef,
-  NgZone,
-} from '@angular/core';
+import { ApplicationRef, NgZone } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   Router,
@@ -17,7 +14,7 @@ import {
 
 import { AppComponent } from './app/app.component';
 import { APP_BASE_HREF } from '@angular/common';
-import { emptyRoutes } from './app/app.routes'
+import { emptyRoutes } from './app/app.routes';
 import { AppProps } from 'single-spa';
 
 let applicationRef: ApplicationRef;
@@ -41,6 +38,8 @@ const lifecycles = singleSpaAngular({
     });
   },
   template: '<mfe1-app-root />',
+  domElementGetter: () =>
+    document.getElementById('microfrontend-container') as HTMLElement,
   Router,
   NavigationStart,
   NgZone,

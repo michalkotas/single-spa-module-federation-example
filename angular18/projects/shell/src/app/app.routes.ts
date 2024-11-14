@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { DummyComponent } from './dummy.component';
+import { MicrofrontendContainerComponent } from './microfrontend-container.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { getAppNames, registerApplication } from 'single-spa';
 
@@ -20,7 +20,7 @@ const loadMfe = (name: string, remoteEntry: string, exposedModule: string) =>
     }
     //@ts-expect-error
     console.log('share scopes', __webpack_share_scopes__)
-    return DummyComponent;
+    return MicrofrontendContainerComponent;
   });
 
 export const routes: Routes = [
