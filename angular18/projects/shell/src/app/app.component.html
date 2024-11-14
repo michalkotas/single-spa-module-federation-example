@@ -1,13 +1,4 @@
-<h1>Shell</h1>
-<ul>
-  <li>
-    <a routerLink="mfe1">mfe 1</a>
-  </li>
-  <li>
-    <a routerLink="mfe2">mfe 2</a>
-  </li>
-  <li>
-    <a routerLink="mfe3">mfe 3</a>
-  </li>  
-</ul>
+@for (singleSpaApp of singleSpaApps; track singleSpaApp) {
+  <parcel [config]="singleSpaApp" [mountParcel]="mountRootParcel"/>
+}
 <router-outlet />
