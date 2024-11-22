@@ -10,9 +10,24 @@ module.exports = (angularWebpackConfig, options) => {
     plugins: [
       ...angularWebpackConfig.plugins,
       new ModuleFederationPlugin({
-        remoteType: "dmodule",
+        remoteType: "module",
         name: "shell",
+        manifest: true,
         filename: "remoteEntry.js",
+        // remotes: {
+        //       app1: {
+        //         external: 'app1@http://localhost:4201/mf-manifest.json',
+        //         // shareScope: 'ang18'
+        //       },
+        //       app2: {
+        //         external: 'app2@http://localhost:4202/mf-manifest.json',
+        //         shareScope: 'ang17'
+        //       },
+        //       app3: {
+        //         external: 'app3@http://localhost:4203/mf-manifest.json',
+        //         shareScope: 'ang17'
+        //       },
+        // },
         shared: {
           "@angular/core": { eager: false, singleton: true, strictVersion: true },
           "@angular/common": { eager: false, singleton: true, strictVersion: true },

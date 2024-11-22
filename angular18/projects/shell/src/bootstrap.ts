@@ -6,5 +6,8 @@ import 'zone.js';
 import { init } from '@module-federation/enhanced/runtime';
 
 bootstrapApplication(AppComponent, appConfig)
-  .then(() => singleSpa.start())
+  .then(() => {
+    console.log(__FEDERATION__);
+    singleSpa.start()
+  })
   .catch((err) => console.error(err));

@@ -24,14 +24,19 @@ export class AppComponent implements OnInit {
   private changeDetectorRef = inject(ChangeDetectorRef);
   mountRootParcel = mountRootParcel;
   public singleSpaApps: Array<LifeCycles | null> = [];
-  ngOnInit(): void {
-    Promise.all([
-      loadRemote<LifeCycles>('app1/App'),
-      loadRemote<LifeCycles>('app2/App'),
-      loadRemote<LifeCycles>('app3/App'),
-    ]).then((apps) => {
-      this.singleSpaApps = apps;
-      this.changeDetectorRef.detectChanges();
-    });
+
+  async ngOnInit() {
+    for (const remoteName of [
+      'app1/App',
+      'app2/App',
+      'app3/App',
+    ]) {
+      const module = await loadRemote<LifeCycles>(remoteName);
+      this.singleSpaApps.push(module)
+      if (this.singleSpaApps.length === 3) {
+        this.changeDetectorRef.detectChanges();
+      }
+      
+    }
   }
 }

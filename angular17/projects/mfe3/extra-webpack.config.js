@@ -1,5 +1,4 @@
-const singleSpaAngularWebpack =
-  require("single-spa-angular/lib/webpack").default;
+const singleSpaAngularWebpack = require("single-spa-angular/lib/webpack").default;
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 
 module.exports = (angularWebpackConfig, options) => {
@@ -20,16 +19,18 @@ module.exports = (angularWebpackConfig, options) => {
         name: "mfe3",
         library: { type: "module" },
         filename: "remoteEntry.js",
+        manifest: true,
         exposes: {
           "./App": "./projects/mfe3/src/main.single-spa.ts",
         },
+        shareScope: 'legacy',
         shared: {
-          "@angular/core": { eager: false, singleton: true, strictVersion: true, shareKey: "@angular/core@17" },
-          "@angular/common": { eager: false, singleton: true, strictVersion: true, shareKey: "@angular/common@17" },
-          "@angular/common/http": { eager: false, singleton: true, strictVersion: true, shareKey: "@angular/common@17" },
-          "@angular/router": { eager: false, singleton: true, strictVersion: true, shareKey: "@angular/router@17" },
-          "single-spa": { eager: false, singleton: true, strictVersion: true, shareKey: "single-spa@17"  },
-          "single-spa-angular": { eager: false, singleton: true, strictVersion: true, shareKey: "single-spa-angular@17" },
+          "@angular/core": { eager: false, singleton: true, strictVersion: true },
+          "@angular/common": { eager: false, singleton: true, strictVersion: true },
+          "@angular/common/http": { eager: false, singleton: true, strictVersion: true },
+          "@angular/router": { eager: false, singleton: true, strictVersion: true },
+          "single-spa": { eager: false, singleton: true, strictVersion: true },
+          "single-spa-angular": { eager: false, singleton: true, strictVersion: true},
         },
       }),
     ],
